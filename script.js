@@ -10,6 +10,12 @@ let generatedPin = 0;
 let submittedPin = 0;
 let attempt = 3;
 
+generateBtn.addEventListener("click", pinGenerator);
+calculatorBtns.forEach((btn) => {
+	btn.addEventListener("click", userPinGenerator);
+});
+submitBtn.addEventListener("click", handlePinSubmit);
+
 // Random 4digit pin generate
 function pinGenerator() {
 	generatedPin = Math.floor(1000 + Math.random() * 9000);
@@ -19,7 +25,6 @@ function pinGenerator() {
 	userInput.focus();
 	userInput.value = "";
 }
-generateBtn.addEventListener("click", pinGenerator);
 
 // User pin generate
 function userPinGenerator(e) {
@@ -37,9 +42,6 @@ function userPinGenerator(e) {
 		}
 	}
 }
-calculatorBtns.forEach((btn) => {
-	btn.addEventListener("click", userPinGenerator);
-});
 
 // Handle user pin submit
 function handlePinSubmit() {
@@ -88,4 +90,3 @@ function handlePinSubmit() {
 		}, 3000);
 	}
 }
-submitBtn.addEventListener("click", handlePinSubmit);
